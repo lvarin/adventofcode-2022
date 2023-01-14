@@ -1,6 +1,4 @@
 import re
-import sys
-import numpy as np
 
 class Sensor():
     sensor=[]
@@ -44,15 +42,14 @@ x=0
 y=0
 oldsol=[x,y]
 while y<=limit and x<=limit:
-    for sensor in sensors:
-        if sensor.inArea([x,y]):
-            x=sensor.getXLimit(y)[1]+1
+    for sen in sensors:
+        if sen.inArea([x,y]):
+            x=sen.getXLimit(y)[1]+1
             if x>limit:
                 y+=1
                 x=0
     if oldsol==[x,y]:
         print("x=%d, y=%d, solution=%d" % (x,y,x*multiplier+y))
-
         break
     oldsol=[x,y]
     print("Current search:",y,x)
